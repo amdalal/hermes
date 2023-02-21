@@ -12,6 +12,12 @@ services:
       - "5432:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
+  hermes:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
 
 volumes:
   postgres:

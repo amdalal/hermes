@@ -175,7 +175,7 @@ func getTokenFromWeb(config *oauth2.Config) *oauth2.Token {
 	m := http.NewServeMux()
 	// TODO: remove hardcoded port.
 	s := http.Server{Addr: ":9999", Handler: m}
-	config.RedirectURL = "http://localhost:9999/callback"
+	config.RedirectURL = "http://ec2-3-7-66-235.ap-south-1.compute.amazonaws.com:9999/callback" // @amit.dalal - changed redirect url
 
 	m.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
 		// Get authorization code from request.

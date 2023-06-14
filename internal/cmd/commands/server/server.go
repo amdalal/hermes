@@ -284,7 +284,7 @@ func (c *Command) Run(args []string) int {
 	// Web endpoints are conditionally authenticated based on if Okta is enabled.
 	webEndpoints := []endpoint{
 		{"/", web.Handler()},
-		{"/api/v1/web/config", web.ConfigHandler(cfg, algoSearch, c.Log)},
+		//{"/api/v1/web/config", web.ConfigHandler(cfg, algoSearch, c.Log)},
 		{"/l/", links.RedirectHandler(algoSearch, cfg.Algolia, c.Log)},
 	}
 

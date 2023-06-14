@@ -46,7 +46,7 @@ type Client struct {
 	// Internal is an Algolia index for storing internal Hermes metadata.
 	Internal *search.Index
 
-	// Links is an Algolia index for storing links of documents
+	// Links is an Algolia index for storing links of documentsh
 	Links *search.Index
 
 	// MissingFields is an Algolia index for storing missing fields from indexed

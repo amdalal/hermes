@@ -12,6 +12,7 @@ bin:
 
 .PHONY: bin/linux
 bin/linux: # bin creates hermes binary for linux
+	rm -f ./hermes
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./hermes ./cmd/hermes
 
 .PHONY: dev
@@ -53,6 +54,11 @@ help: ## Print this help
 
 .PHONY: run
 run:
+	./hermes server -config=config.hcl
+
+.PHONY: run/all
+run/all:
+	su - postgres -c "pg_ctl start -D /var/lib/postgresql/data -l /var/lib/postgresql/log.log && psql --command \"ALTER USER postgres WITH ENCRYPTED PASSWORD 'postgres';\" && psql --command \"CREATE DATABASE builddb;\"" &
 	./hermes server -config=config.hcl
 
 .PHONY: test
